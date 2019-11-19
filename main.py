@@ -9,5 +9,6 @@ if not os.path.isfile('information_retrieval/data/judgements'):
     store_decomposed_sentences_df('information_retrieval/data/judgements.jsonl')
 else:
     judgements = pd.read_csv('information_retrieval/data/judgements')
+    print(judgements.shape)
 
 

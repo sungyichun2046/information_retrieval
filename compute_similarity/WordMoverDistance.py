@@ -43,8 +43,7 @@ def word_mover_distance(first_sent_tokens, second_sent_tokens, wvmodel, lpFile=N
     prob = word_mover_distance_probspec(first_sent_tokens, second_sent_tokens, wvmodel, lpFile=lpFile)
     return pulp.value(prob.objective)
 
-"""
-USAGE
+import time
 topics = {'A': 'Rupture abusive de la relation de travail',
           'B': 'Rupture abusive du contrat de travail',
           'C': 'Rupture brutale de relations commerciales établies',
@@ -58,7 +57,10 @@ topicId2text = {k : v.split() for k, v in topics.items()}
 print(topicId2text['A'])
 tokens2 = sent.split()
 vectorizer = fasttext.load_model("../word_embedding/fasttext_model.bin")
+start = time.now()
 for id in topicId2text:
     tokens1 = topicId2text[id]
     print("sim=", word_mover_distance_probspec(tokens1, tokens2, vectorizer))
-"""
+
+fin = time.now()
+print("time to calculate=", fin-start)
