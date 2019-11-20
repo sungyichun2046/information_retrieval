@@ -1,0 +1,4 @@
+{
+  "vectors_file": "/home/yichun/projects/information_retrieval/word_embedding/fasttext_model_50d.bin",
+  "sentence_similarity_method": "cosine"
+}
