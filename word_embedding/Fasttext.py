@@ -23,8 +23,10 @@ class Fasttext():
                 f.write("{}{}".format(text, '\n'))
 
     def train(self):
-        model = fasttext.train_unsupervised("data/corpus.txt", model='cbow', minCount=10, lr=0.05, dim=100, ws=5, epoch=5)
-        model.save_model("fasttext_model.bin")
+        model = fasttext.train_unsupervised("data/corpus.txt", model='cbow', minCount=10, lr=0.05, dim=50, ws=5, epoch=5)
+        model.save_model("fasttext_model_50d.bin")
+
+
 
 
 
