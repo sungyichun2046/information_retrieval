@@ -67,14 +67,15 @@ def compute_similarities(judgements, method="cosine", vectors=None):
     #store_similarities(judgements, similarity_calculator, method, vectorizer, topicId2text)#uncomment this line for storing similarities
     judgements['sims'] = create_similarities_columns(method)
     judgements[['sim_a','sim_b', 'sim_c', 'sim_d', 'sim_e', 'sim_f', 'sim_g']] = pd.DataFrame(judgements.sims.values.tolist(), index= judgements.index)
-    judgements['top1topic'], judgements[('diff_top1sim_top2sim')] = zip(*judgements.apply(lambda row: get_top_infos(row['sims'], method), axis=1))
+    judgements['topic_similarity'], judgements[('diff_top1sim_top2sim')] = zip(*judgements.apply(lambda row: get_top_infos(row['sims'], method), axis=1))
     #print relevant judgements
+    return judgements
 
 def create_similarities_columns(method):
     file = "/home/yichun/projects/information_retrieval/compute_similarity/results/scores_{}".format(method)
     df = pd.read_csv(file, sep='\t', header=None)
-    #df.iloc[:, 1] = df.iloc[:, 1].apply(lambda x: [float(e) for e in x.split(' ')])
-    df.iloc[:, 1] = df.iloc[:, 1].apply(lambda x: [round(float(e), 2) for e in x.split(' ')])
+    df.iloc[:, 1] = df.iloc[:, 1].apply(lambda x: [float(e) for e in x.split(' ')])
+    #df.iloc[:, 1] = df.iloc[:, 1].apply(lambda x: [round(float(e), 2) for e in x.split(' ')])
     return df.iloc[:, 1]
 
 def store_similarities(judgements, similarity_calculater, method, vectorizer, topicId2text):
