@@ -40,13 +40,13 @@ def get_processed_texts(texts):
 def remove_stop_sentence(text, stop_sentences):
     """
     Remove sentence if the sentence's occurrence frequency if high
-    :param text: original text
+    :param text: original text tokenized
     :param stop_sentences: stop sentences
     :return: sentences processed
     """
     text_tokenized = [t.lower() for t in text if t.lower() not in stop_sentences]
-    if len(text_tokenized) == 0:
-        return text
+    if len(text_tokenized) < 15 :
+        return ' '.join([elem.lower() for elem in text  if elem.lower() not in punctuations])
     else:
         new_text = ' '.join([elem for elem in text_tokenized if elem not in punctuations])
     return new_text
