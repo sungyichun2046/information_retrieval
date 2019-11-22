@@ -3,13 +3,13 @@ import sys
 import pandas as pd
 import json
 sys.path.append('/home/yichun/projects/information_retrieval')
-from process import store_decomposed_sentences_df, tokenizer
-from compute_similarity.compute import compute_similarities, compute_similarity_with_topics, get_top_infos
+from process import store_decomposed_sentences_df
+from compute_similarity.compute import compute_similarities
 from extractor_keywords.get_topic_based_on_keywords import get_extracted_keywords, get_topic
 from evaluation import evaluate
 
 CONFIG = json.load(open("information_retrieval/config.json"))
-store_decomposed_sentences_df('information_retrieval/data/judgements.jsonl') # uncomment this line the first time
+#store_decomposed_sentences_df('information_retrieval/data/judgements.jsonl') # uncomment this line the first time
 judgements = pd.read_csv('information_retrieval/data/judgements')
 judgements = compute_similarities(judgements, vectors=CONFIG['vectors_file'], method=CONFIG['sentence_similarity_method'])
 judgements['keywords'] = judgements.apply(lambda row: get_extracted_keywords(row['text']), axis=1)
