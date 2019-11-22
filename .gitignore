@@ -14,5 +14,6 @@ compute_similarity/results/
 word_embedding/fasttext_model_50d.bin
 word_embedding/fasttext_model_gensim
 word_embedding/word2vec_model_100d
+word_embedding/data/
 	
 	
