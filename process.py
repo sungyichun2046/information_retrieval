@@ -40,25 +40,32 @@ def get_processed_texts(texts):
 def remove_stop_sentence(text, stop_sentences):
     """
     Remove sentence if the sentence's occurrence frequency if high
-    :param text: original text tokenized
+    :param text: original list of sentences
     :param stop_sentences: stop sentences
     :return: sentences processed
     """
-    text_tokenized = [t.lower() for t in text if t.lower() not in stop_sentences]
-    if len(text_tokenized) < 15 :
-        return ' '.join([elem.lower() for elem in text  if elem.lower() not in punctuations])
+    list_sentences_without_stop_sent = [sent.lower() for sent in text if sent.lower() not in stop_sentences]
+    words = [w for sent in list_sentences_without_stop_sent for w in sent.split(' ')]
+    if len(words) < 15 :
+        return ' '.join([get_sentenc_without_punctuation(sent).lower() for sent in text])
     else:
-        new_text = ' '.join([elem for elem in text_tokenized if elem not in punctuations])
+        new_text = ' '.join([get_sentenc_without_punctuation(sent) for sent in list_sentences_without_stop_sent])
     return new_text
+
+def get_sentenc_without_punctuation(sent):
+    for p in punctuations:
+        if p in sent:
+            sent = sent.replace(p, '')
+    return sent
 
 def store_decomposed_sentences_df(infile):
     df = get_dataframe(infile)
     df['judgementId'] = df.index + 1
-    df['text_tokenized'] = df['text'].apply(lambda x: get_processed_texts(x))
-    stop_sentences = get_stop_sentences(df['text_tokenized'])
-    df['text'] = df['text_tokenized'].apply(lambda x: remove_stop_sentence(x, stop_sentences))
+    df['list_of_sents'] = df['text'].apply(lambda x: get_processed_texts(x))
+    stop_sentences = get_stop_sentences(df['list_of_sents'])
+    df['text'] = df['list_of_sents'].apply(lambda x: remove_stop_sentence(x, stop_sentences))
     output_df = df[['judgementId', 'text']].copy()
-    output_df.to_csv('information_retrieval/data/judgements', header=True, index=False)
+    output_df.to_csv('/home/yichun/projects/information_retrieval/data/judgements', header=True, index=False)
 
 def get_stop_sentences(texts):
     texts = [text for texts in list(texts) for text in texts]
@@ -68,4 +75,19 @@ def get_stop_sentences(texts):
         json.dump(stop_sents, f, indent=1, sort_keys=True)
     return stop_sents
 
+def tokenizer(text):
+    """
+    :param text: string
+    :return: list of token
+    """
+    # split text with multiple delimiters
+
+    if str(text).isdigit() or type(text) == int:
+        tokens = str(text)
+    else:
+        tokens = re.split(
+                r'\s+',
+                re.sub(r"[,\!?'’/\(\)\.]", " ", text).strip()
+        )
+    return tokens
 
