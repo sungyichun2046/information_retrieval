@@ -3,5 +3,16 @@
 __pycache__/
 compute_similarity/__pycache__/
 word_embedding/__pycache__/
+
+#jupyter
+.ipynb_checkpoints
+
+#results
+compute_similarity/results/
+
+#word embeddings
+word_embedding/fasttext_model_50d.bin
+word_embedding/fasttext_model_gensim
+word_embedding/word2vec_model_100d
 	
 	
