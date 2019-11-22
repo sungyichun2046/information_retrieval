@@ -72,7 +72,7 @@ def get_stop_sentences(texts):
     counter=collections.Counter(texts)
     stop_sents = [sent.lower() for (sent, occ) in counter.most_common(1550) if len(sent) > 2 and 'euros' not in sent.lower() and '€' not in sent and len(sent.split()) > 1 and len(sent.split()) < 5]
     with open("/home/yichun/projects/information_retrieval/data/stop_sentences.json", "w") as f:
-        json.dump(stop_sents, f, indent=1, sort_keys=True)
+        json.dump(stop_sents, f, indent=1, ensure_ascii=False, sort_keys=True)
     return stop_sents
 
 def tokenizer(text):
