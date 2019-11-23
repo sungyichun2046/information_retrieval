@@ -52,7 +52,7 @@ def get_top_infos(sims, method):
     top1topic = t[top1topic_index]
     return top1topic, diff_top1sim_top2sim
 
-def compute_similarities(judgements, method="cosine", vectors=None):
+def compute_similarities(judgements, method=None, vectors=None):
     """
     :param {dataframe} judgements:
     :param {string} method: method to compute similarity bewteen sentences
