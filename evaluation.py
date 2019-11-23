@@ -13,7 +13,7 @@ def evaluate():
         corpus = json.load(f)
         for sentence, topic in corpus:
             scores = compute_similarity_with_topics(sentence, 'cosine', vectors_file)
-            print('Sentece = {}\nTopic = {}\nCosine Similarities = {}, Topic identified by similarities = {}\n'.format(sentence,topic, scores, get_top_infos(scores, 'cosine')[0]))
+            print('\n\nSentence = {}\nTopic = {}\nCosine Similarities = {}\nTopic identified by similarities = {}\n'.format(sentence,topic, scores, get_top_infos(scores, 'cosine')[0]))
             scores = compute_similarity_with_topics(sentence, 'wmd', vectors_file)
-            print("Word Mover's Distances = {}, Topic identified by similarities = {}".format(scores, get_top_infos(scores, 'wmd')[0]))
+            print("Word Mover's Distances = {}\nTopic identified by dissimilarities = {}\n".format(scores, get_top_infos(scores, 'wmd')[0]))
             print("Keywords = {}\nTopic indentified by keywords= {}".format(get_extracted_keywords(sentence), get_topic(get_extracted_keywords(sentence))))
