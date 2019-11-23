@@ -33,7 +33,8 @@ class Word2vec():
         return self.model.similarity(word1, word2)
 
     def get_most_similar_words(self, word=None):
-        similar_words = self.model.wv.most_similar(word)
+        similars = self.model.wv.most_similar(word)
+        similar_words = [w for w, s in similars if not w.isdigit()]
         #return [w for sim, w in similarity_words]
         return similar_words
 
