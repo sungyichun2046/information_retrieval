@@ -1,0 +1,11 @@
+word,close_words
+rupture,"['contrat', 'résiliation', 'apprentissage', 'clause', 'bail', 'anticipée', 'mauvaise', 'sécurisation', 'relation', 'professionnelle']"
+prestation,"['compensatoire', 'alimentaire', 'pension', 'capital', 'viagère', 'contribution', 'récompense', 'secours', 'détient', 'rente']"
+relation,"['foi', 'quotidienne', 'mauvaise', 'certificat', 'temps', 'sécurisation', 'accident', 'social', 'contrat', 'voix']"
+travail,"['rupture', 'contrat', '3253-5', 'sécurisation', 'mauvaise', 'apprentissage', 'd3253-5', 'civil', 'indéterminée', 'l3253-17']"
+contrat,"['bail', 'rupture', 'résiliation', 'mauvaise', 'indéterminée', 'foi', 'conclu', 'temps', 'déterminée', 'dissimulé']"
+préavis,"['compensatrice', 'bruts', 'brut', 'payés', 'complément', 'conventionnelle', 'congés', 'rappel', 'journalière']"
+indemnité,"['dommages-intérêts', 'préavis', 'bruts', 'conventionnelle', 'compensatrice', 'somme', 'prime', 'ancienneté']"
+commerciales,"['caractéristiques', 'contiennent', 'dégradations', 'maladies', 'panneaux', 'initiales', 'médicaments', 'voisinage', 'raisons', 'marchés']"
+congés,"['payés', 'afférents', 'bruts', 'brut', 'préavis', 'supplémentaires', 'rappels', 'compensatrice', 'heures', 'repos']"
+payés,"['congés', 'afférents', 'bruts', 'brut', 'préavis', 'compensatrice', 'repos', 'compensatrices', 'congés-payés', 'rappels']"
